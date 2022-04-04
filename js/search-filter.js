@@ -21,30 +21,43 @@ function debounce(func, timeout = 300){
 function searchFilter(searchId){
     debounce(searchFilterRaw(searchId));
 }
-function searchFilterRaw(searchId) {
-    //debugger
+function fixFavicon(v){
+    v.imageUrl = v.imageUrl.replace('https://i.olsh.me/icon?url=', 'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://');
+    v.imageUrl = v.imageUrl.replace('80..120..200', '32');
+}
+function getSearchInput(searchId){
     var input = document.getElementById(searchId + '-input');
-    var searching = document.getElementById('searching-pill');
-    input = input.value.toUpperCase();
     if(!input || !input.length){
         input = qm.urlHelper.getParam("q");
     }
+    input = input.value.toUpperCase();
+    return input;
+}
+
+function addSearchingNotification(searchId, input) {
+    apiResultsBox(searchId).innerHTML = '<a href="">' +
+        '    <div class="flex justify-center items-center m-1 font-large py-1 px-2 bg-white rounded-full text-purple-700 bg-purple-100 border border-purple-300 ">' +
+        '       <div slot="avatar">' +
+        '           <div class="flex relative w-4 h-4 bg-orange-500 justify-center items-center m-1 mr-2 ml-0 my-0 text rounded-full">' +
+        '             <img class="rounded-full" alt="A" src="https://image.flaticon.com/icons/png/512/3208/3208746.png">' +
+        '        </div>' +
+        '       </div>' +
+        '           <div class="text font-normal leading-none max-w-full flex-initial">' +
+        '          Searching... ' +
+        '        </div>' +
+        '    </div>' +
+        '</a>';
+    console.log("searching for " + input);
+}
+
+function searchFilterRaw(searchId) {
+    //debugger
+    var searching = document.getElementById('searching-pill');
+    var input = getSearchInput(searchId);
     var listId = searchId + '-list';
     var ul = document.getElementById(listId);
     var items = ul.getElementsByTagName('a');
-    apiResultsBox(searchId).innerHTML = '<a href="">' +
-                '    <div class="flex justify-center items-center m-1 font-large py-1 px-2 bg-white rounded-full text-purple-700 bg-purple-100 border border-purple-300 ">' +
-                '       <div slot="avatar">' +
-                '           <div class="flex relative w-4 h-4 bg-orange-500 justify-center items-center m-1 mr-2 ml-0 my-0 text rounded-full">' +
-                '             <img class="rounded-full" alt="A" src="https://image.flaticon.com/icons/png/512/3208/3208746.png">' +
-                '        </div>' +
-                '       </div>' +
-            '           <div class="text font-normal leading-none max-w-full flex-initial">' +
-                '          Searching... '+
-                '        </div>' +
-                '    </div>' +
-                '</a>';
-    console.log("searching for " + input);
+    addSearchingNotification(searchId, input);
     qm.variablesHelper.getFromLocalStorageOrApi({searchPhrase: input})
         .then(function (variables){
             ul.innerHtml = "";
@@ -55,23 +68,26 @@ function searchFilterRaw(searchId) {
                     qmLog.error("no url was on: ", v)
                     v.url = window.location.href+"/"+v.id;
                 }
-                v.imageUrl = v.imageUrl.replace('https://i.olsh.me/icon?url=', 'https://besticon-demo.herokuapp.com/icon?url=')
-                html += //'<li><a href="'+v.url+'">'+v.name+'</a></li>' +
-                '<a href="'+v.url+'" title="'+v.subtitle+'" data-search="'+v.synonyms.join(", ")+'">' +
-                '    <div class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-purple-700 bg-purple-100 border border-purple-300 ">' +
-                '                    <div slot="avatar">' +
-                '                <div class="flex relative w-4 h-4 bg-orange-500 justify-center items-center m-1 mr-2 ml-0 my-0 text rounded-full">' +
-                '                    <img class="rounded-full" alt="A" src="'+v.imageUrl+'">' +
-                '                </div>' +
-                '            </div>' +
-                '                <div class="text font-normal leading-none max-w-full flex-initial">' +
-                '            ' + v.name+
-                '                            <span style="font-size: 0.6rem;" class="badge rounded-full px-1 py-1 text-center object-right-top bg-white border border-purple-300">' +
-                '                   ' + v.numberOfMeasurements+
-                '                </span>' +
-                '                    </div>' +
-                '    </div>' +
-                '</a>';
+                fixFavicon(v)
+                function addPillHtml() {
+                    html += //'<li><a href="'+v.url+'">'+v.name+'</a></li>' +
+                        '<a href="' + v.url + '" title="' + v.subtitle + '" data-search="' + v.synonyms.join(", ") + '">' +
+                        '    <div class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-purple-700 bg-purple-100 border border-purple-300 ">' +
+                        '                    <div slot="avatar">' +
+                        '                <div class="flex relative w-4 h-4 bg-orange-500 justify-center items-center m-1 mr-2 ml-0 my-0 text rounded-full">' +
+                        '                    <img class="rounded-full" alt="A" src="' + v.imageUrl + '">' +
+                        '                </div>' +
+                        '            </div>' +
+                        '                <div class="text font-normal leading-none max-w-full flex-initial">' +
+                        '            ' + v.name +
+                        '                            <span style="font-size: 0.6rem;" class="badge rounded-full px-1 py-1 text-center object-right-top bg-white border border-purple-300">' +
+                        '                   ' + v.numberOfMeasurements +
+                        '                </span>' +
+                        '                    </div>' +
+                        '    </div>' +
+                        '</a>';
+                }
+                addPillHtml();
             })
             //console.log(html)
             apiResultsBox(searchId).innerHTML = html
