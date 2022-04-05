@@ -249,67 +249,72 @@
                     </div>
     </article>
 </main>
-<footer id="footer" class="site-footer">
+<nav id="footer-nav">
+    <footer id="footer" class="site-footer">
 
-    <div class="social-icons">
-                    <a class="social-icon" href="https://CureDAO.org">
+        <div class="social-icons">
+            <a class="social-icon" href="https://CureDAO.org">
                 <i class="fas fa-info-circle fa-2x" title="A better world through data."></i>
             </a>
-                    <a class="social-icon" href="https://curedao.readme.io/">
-                <i class="fas fa-book fa-2x" title="Interactive documentation/playground for the QuantiModo Application Programming Interface (API)"></i>
+            <a class="social-icon" href="https://curedao.readme.io/">
+                <i class="fas fa-book fa-2x"
+                   title="Interactive documentation/playground for the QuantiModo Application Programming Interface (API)"></i>
             </a>
-                    <a class="social-icon" href="https://builder.quantimo.do">
-                <i class="fas fa-tools fa-2x" title="The App Builder allows anyone to create their own digital health app in minutes without any coding.  Their application can then also be built and released on iOS, Android, and as a Chrome browser extension. "></i>
+            <a class="social-icon" href="https://builder.curedao.org">
+                <i class="fas fa-tools fa-2x"
+                   title="The App Builder allows anyone to create their own digital health app in minutes without any coding.  Their application can then also be built and released on iOS, Android, and as a Chrome browser extension. "></i>
             </a>
-                    <a class="social-icon" href="mailto:mike@quantimo.do">
+            <a class="social-icon" href="mailto:mike@quantimo.do">
                 <i class="fab fa-facebook-messenger fa-2x" title="Contact Us"></i>
             </a>
-                    <a class="social-icon" href="https://api.curedao.org/datalab">
-                <i class="fas fa-calculator fa-2x" title="The DataLab administrative backend provides a powerful tool to create reports, drill down, clean data, monitor progress through the analytical pipeline, and identify issues.  The DataLab also provides easy navigation between dozens of relationships between the various model class via a data graph. "></i>
+            <a class="social-icon" href="https://api.curedao.org/datalab">
+                <i class="fas fa-calculator fa-2x"
+                   title="The DataLab administrative backend provides a powerful tool to create reports, drill down, clean data, monitor progress through the analytical pipeline, and identify issues.  The DataLab also provides easy navigation between dozens of relationships between the various model class via a data graph. "></i>
             </a>
-                    <a class="social-icon" href="https://help.quantimo.do">
+            <a class="social-icon" href="https://help.quantimo.do">
                 <i class="far fa-question-circle fa-2x" title="Get Help"></i>
             </a>
-                    <a class="social-icon" href="https://github.com/QuantiModo/quantimodo-android-chrome-ios-web-app">
+            <a class="social-icon" href="https://github.com/cure-dao">
                 <i class="fab fa-github fa-2x" title="A Better World Through Data"></i>
             </a>
-                    <a class="social-icon" href="https://physician.curedao.org">
-                <i class="fas fa-medkit fa-2x" title="The physician dashboard allows physicians to view their patients data in addition to regularly emailed reports."></i>
+            <a class="social-icon" href="https://physician.curedao.org">
+                <i class="fas fa-medkit fa-2x"
+                   title="The physician dashboard allows physicians to view their patients data in addition to regularly emailed reports."></i>
             </a>
-                    <a class="social-icon" href="https://quantimo.do/privacy">
+            <a class="social-icon" href="https://curedao.org/privacy-policy">
                 <i class="fas fa-lock fa-2x" title="Privacy Policy"></i>
             </a>
-                    <a class="social-icon" href="https://studies.curedao.org">
+            <a class="social-icon" href="https://studies.curedao.org">
                 <i class="fas fa-flask fa-2x" title="The Journal of Citizen Science"></i>
             </a>
-                    <a class="social-icon" href="https://quantimo.do/tos">
+            <a class="social-icon" href="https://quantimo.do/tos">
                 <i class="fas fa-file-contract fa-2x" title="Terms of Service"></i>
             </a>
-                    <a class="social-icon" href="https://wordpress.org/plugins/quantimodo">
-                <i class="fab fa-wordpress fa-2x" title="The QuantiModo WordPress Plugin facilitates the democratization of clinical research by allowing anyone to create their own research platform.  It allows users to record, aggregate, analyze and visualize their health and life-tracking data.  The data collection, analysis and visualization functionality may be included in any page or post."></i>
-            </a>
-            </div>
+<!--            <a class="social-icon" href="https://wordpress.org/plugins/quantimodo">
+                <i class="fab fa-wordpress fa-2x"
+                   title="The QuantiModo WordPress Plugin facilitates the democratization of clinical research by allowing anyone to create their own research platform.  It allows users to record, aggregate, analyze and visualize their health and life-tracking data.  The data collection, analysis and visualization functionality may be included in any page or post."></i>
+            </a>-->
+        </div>
 
-  <div class="copyright">
-      <p>&copy; 2021
-          <a href="https://curedao.org" rel="nofollow">
-              CureDAO
-          </a>
-      </p>
-  </div>
-</footer>
+        <div class="copyright">
+            <p>&copy; 2021
+                <a href="https://curedao.org" rel="nofollow">
+                    CureDAO
+                </a>
+            </p>
+        </div>
+    </footer>
+</nav>
 
-<script src="https://web.curedao.org/lib/localforage/dist/localforage.js"></script>
-<script src="./quantimodo-web.js"></script>
+
+<script src="https://web.quantimo.do/lib/localforage/dist/localforage.js"></script>
+<script src="./js/quantimodo-web.js"></script>
 <script src="./js/qmLogger.js"></script>
 <script src="https://web.quantimo.do/lib/q/q.js"></script>
-<script src="./js/qmHelpers.js"></script>
-<script src="https://static.quantimo.do/data/appSettings.js"></script> <!-- Must come after qmHelpers because we assign to qm.staticData -->
-<script src="https://static.quantimo.do/data/connectors.js"></script>
+
 <script src="https://static.quantimo.do/data/qmStates.js"></script>
 <script src="https://static.quantimo.do/data/stateNames.js"></script>
 <script defer src="https://static.quantimo.do/data/units.js"></script>
-<script defer src="https://static.quantimo.do/data/variableCategories.js"></script>
 <script defer src="https://static.quantimo.do/data/commonVariables.js"></script>
 <script defer src="https://static.quantimo.do/data/docs.js"></script>
 <script defer src="https://static.quantimo.do/data/dialogAgent.js"></script>
@@ -317,18 +322,18 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <!-- Start of Async Drift Code -->
 <script type="text/javascript">
-    !function() {
+    !function () {
         var t;
         if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0,
-            t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
-            t.factory = function(e) {
-                return function() {
+            t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on"],
+            t.factory = function (e) {
+                return function () {
                     var n;
                     return n = Array.prototype.slice.call(arguments), n.unshift(e), t.push(n), t;
                 };
-            }, t.methods.forEach(function(e) {
+            }, t.methods.forEach(function (e) {
             t[e] = t.factory(e);
-        }), t.load = function(t) {
+        }), t.load = function (t) {
             var e, n, o, i;
             e = 3e5, i = Math.ceil(new Date() / e) * e, o = document.createElement("script"),
                 o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + i + "/" + t + ".js",
@@ -338,10 +343,13 @@
     drift.SNIPPET_VERSION = '0.3.1';
     drift.load('pt53uxxsr2gg');
 </script>
-<!-- End of Async Drift Code --><script src="https://adminlte.io/themes/AdminLTE/bower_components/PACE/pace.min.js"></script>
+<!-- End of Async Drift Code -->
+<script src="https://adminlte.io/themes/AdminLTE/bower_components/PACE/pace.min.js"></script>
 <!-- Start resources/views/loggers-js.blade.php -->
 <script src="https://cdn.lr-ingest.io/LogRocket.min.js" crossorigin="anonymous"></script>
-<script>if(window.location.href.indexOf("app.quantimo.do") > -1){LogRocket.init('mkcthl/quantimodo');}</script>
+<script>if (window.location.href.indexOf("app.quantimo.do") > -1) {
+    LogRocket.init('mkcthl/quantimodo');
+}</script>
 <script type="text/javascript" src="https://d2wy8f7a9ursnm.cloudfront.net/v7/bugsnag.min.js"></script>
 <script type="text/javascript">Bugsnag.start('ae7bc49d1285848342342bb5c321a2cf')</script>
 <script src="https://static.quantimo.do/js/qmLog.js"></script>
