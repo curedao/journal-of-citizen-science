@@ -27,10 +27,14 @@ function fixFavicon(v){
 }
 function getSearchInput(searchId){
     var input = document.getElementById(searchId + '-input');
+    if(input){input = input.value;}
     if(!input || !input.length){
         input = qm.urlHelper.getParam("q");
     }
-    input = input.value.toUpperCase();
+    if(!input || !input.length){
+        return ''
+    }
+    input = input.toUpperCase();
     return input;
 }
 
