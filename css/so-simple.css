@@ -308,7 +308,7 @@ tr, td, th { vertical-align: middle; }
 .site-nav ul { display: block; margin: 0; padding: 0.25em 0.75em; list-style: none; color: #fff; background-color: #000; border-radius: 0 0 1rem 1rem; }
 @media (min-width: 48em) { .site-nav ul { display: inline-block; } }
 .site-nav li { display: inline-block; font-size: 0.75em; }
-.site-nav a { display: block; padding: 0.5em 0.75em; color: #fff; text-transform: uppercase; text-decoration: none; border: 1px solid #000; border-radius: 1rem; }
+.site-nav a { display: block; padding: 0.5em 0.75em; /* color: #fff; */ text-transform: uppercase; text-decoration: none; /* border: 1px solid #000; */ border-radius: 1rem; }
 .site-nav a:hover { border-color: #fff; }
 @media (min-width: 48em) { .site-nav { display: block; } }
 .site-nav.js-menu-is-open { display: block; -webkit-animation-name: initial; animation-name: initial; }
