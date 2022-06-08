@@ -64,11 +64,15 @@ function searchFilterRaw(searchId) {
     var ul = document.getElementById(listId);
     var items = ul.getElementsByTagName('a');
     addSearchingNotification(searchId, input);
-    qm.variablesHelper.getFromLocalStorageOrApi({searchPhrase: input})
+    qm.commonVariablesHelper.getFromLocalStorageOrApi({searchPhrase: input})
         .then(function (variables){
             ul.innerHtml = "";
             //debugger
             var html = ""
+            if(!variables.length && !input.length){
+                variables = qm.staticData.commonVariables
+            }
+            variables = qm.arrayHelper.sortByProperty(variables, 'numberOfCorrelations', 'desc');
             variables.map(function (v){
                 if(!v.url || v.url === "undefined"){
                     qmLog.error("no url was on: ", v)
@@ -78,6 +82,9 @@ function searchFilterRaw(searchId) {
                 function addPillHtml() {
                     var ionIcon = v.ionIcon.replace('ion-', '').replace('ios-', '').replace('android-', '');
                     if(ionIcon === "fork"){ionIcon = "fast-food"}
+                    if(ionIcon === "laptop"){ionIcon = "laptop-outline"}
+                    if(ionIcon === "partlysunny"){ionIcon = "partly-sunny-outline"}
+                    //if(v.variableCategoryName === "Environment"){ionIcon = "rainy"}
                     html += //'<li><a href="'+v.url+'">'+v.name+'</a></li>' +
                         '<a href="' + v.url + '" title="' + v.subtitle + '" data-search="' + v.synonyms.join(", ") + '">' +
                         '    <div class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-purple-700 bg-purple-100 border border-purple-300 ">' +
@@ -150,3 +157,6 @@ $( document ).ready(function() {
     console.log( "ready!" );
     searchFilterRaw('variables');
 });
+var model = {
+    variables: qm.staticData.commonVariables
+}

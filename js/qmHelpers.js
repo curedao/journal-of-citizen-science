@@ -11618,6 +11618,63 @@ var qm = {
     },
     commonVariablesHelper: {
         cached: {},
+        getFromLocalStorageOrApi: function(params){
+            var deferred = Q.defer();
+            params = params || {};
+            var search = params.searchPhrase;
+            var min = params.minimumNumberOfResultsRequiredToAvoidAPIRequest || 10;
+            if(!search || search === ""){min = 20;}
+            if(search && search.length > 8){min = 4;}
+            if(search && search.length > 12){min = 2;}
+            if(search && search.length > 16){min = 1;} // Must be 16 search.length or we don't make API request to get Green Olives
+            if(params.id || params.name){min = 1;}
+            function sortUpdateSubtitlesAndReturnVariables(variables, params){
+                if(!params.sort){
+                    variables = qm.variablesHelper.defaultVariableSort(variables, params);
+                } else {
+                    variables = qm.arrayHelper.sortByProperty(variables, params.sort);
+                }
+                variables = qm.variablesHelper.updateSubtitles(variables, params);
+                if(params && params.limit){
+                    variables = variables.slice(0, params.limit)
+                }
+                deferred.resolve(variables)
+            }
+            function getFromApi(localVariables, reason){
+                if(reason && typeof reason !== "string"){throw "Reason should be a string!"}
+                params.reason = reason;
+                 qm.userVariables.getFromApi(params).then(function(variablesFromApi){
+                    if(localVariables && variablesFromApi.length < localVariables.length && variablesFromApi.length < 50){
+                        qmLog.errorAndExceptionTestingOrDevelopment("More local variables than variables from API!",
+                            {
+                                local: localVariables.length,
+                                api: variablesFromApi.length,
+                                params: params
+                            });
+                    }
+                    sortUpdateSubtitlesAndReturnVariables(variablesFromApi, params);
+                }, function(error){
+                    qmLog.error(error);
+                    deferred.reject(error);
+                });
+                return deferred.promise;
+            }
+            var localVariables = qm.commonVariablesHelper.getCached(params);
+            var localCount = localVariables.length;
+            if(localCount){
+                qmLog.debug("Returning " + localCount + " local variables that match");
+                sortUpdateSubtitlesAndReturnVariables(localVariables, params); // Return the local ones we found
+                if(localCount >= min){
+                    qmLog.debug("No need for API request because we have more than " + min);
+                    deferred.resolve(localVariables);
+                    return deferred.promise;
+                }
+                qmLog.debug("Searching api as well because we don't have more than " + min);
+
+            }
+            return getFromApi(localVariables, "only " + localCount +
+                " local user or common variables and minimumNumberOfResultsRequiredToAvoidAPIRequest is " + min);
+        },
         getCached: function(params){
             var fromStatic = qm.staticData.commonVariables;
             // TODO: Make staticData.commonVariables an object indexed by name to easily reference properties in IDE autocomplete

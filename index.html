@@ -59,7 +59,7 @@
     <link rel="stylesheet" href="https://static.quantimo.do/css/jekyll-text-theme.css">
     <link rel="stylesheet" href="https://static.quantimo.do/css/toc.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.css">
-    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
     <link rel="alternate" type="application/atom+xml" title="CureDAO" href="feed.xml">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -70,7 +70,7 @@
     <script src="https://static.quantimo.do/data/connectors.js"></script>
     <script src="https://static.quantimo.do/data/variableCategories.js"></script>
     <script src="https://static.quantimo.do/js/psychedelic-loader.js" defer></script>
-    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://static.quantimo.do/data/commonVariables.js"></script>
 
 </head>
 <body class="layout--default">
@@ -137,7 +137,7 @@
                  class="site-logo-img animated fadeInDown" alt="The Journal of Citizen Science">
         </a>
         <h1 class="site-title animated fadeIn"><a href="/">The Journal of Citizen Science</a></h1>
-        <p class="site-description animated fadeIn" itemprop="description">Ending suffering through crowdsourced
+        <p class="site-description animated fadeIn" itemprop="description">Ending suffering through crowd-sourced
             clinical research. </p>
     </div>
 </header><!-- /.masthead -->
@@ -165,7 +165,7 @@
                 </form>
                 <div id="variables-list"
                      class="flex flex-wrap justify-center">
-                    <template x-for="item in  model.variables" :key="item">
+                    <!--<template x-for="item in  model.variables" :key="item.id">
                         <a :href="`${item.url}`"
                            style="margin: 0.2rem;"
                            :title="`${item.tooltip}`">
@@ -173,20 +173,20 @@
                                 <div slot="avatar">
                                     <div class="flex relative w-4 h-4 bg-orange-500 justify-center items-center m-1 mr-2 ml-0 my-0 text-xs rounded-full">
 
-                                        <i :class="`${item.font_awesome}`"></i>
+                                        <ion-icon :name="`${item.ionIcon}`"></ion-icon>
                                     </div>
                                 </div>
                                 <div class="text-xs font-normal leading-none max-w-full flex-initial"
-                                     x-text="item.title">
+                                     x-text="item.name">
 
                                 </div>
                                 <div style="font-size: 0.6rem; margin-left: 0.6rem;"
-                                     x-text="item.badge_text"
+                                     x-text="item.numberOfCorrelations"
                                      class="badge rounded-full px-1 py-1 text-center object-right-top bg-white border border-purple-300">
                                 </div>
                             </div>
                         </a>
-                    </template>
+                    </template>-->
                 </div>
             </div>
             <div id="variables-api-results" class="flex flex-wrap justify-center"></div>
@@ -211,7 +211,7 @@
                             </div>
                             <!-- Start resources/views/button-pink-rounded.blade.php -->
                             <a
-                                    href="https://web.quantimo.do/#/app/onboarding"
+                                    href="https://app.curedao.org/#/app/onboarding"
                                     title="Going through the onboarding process makes it easy to tracking and discover hidden factors affecting your well-being!"
                                     target="_blank"
                                     class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-base px-8 py-3 rounded-full shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
@@ -223,7 +223,7 @@
                             </a>
                             <!-- End resources/views/button-pink-rounded.blade.php -->
                             <div id="categories-list" class="flex flex-wrap justify-center">
-                                <a href="https://local.curedao.org/categories/Emotions"
+                                <a href="/categories/Emotions"
                                    title="Do you have any emotions that fluctuate regularly?  If so, add them so I can try to determine which factors are influencing them."
                                    data-search="Emotions, Emotion, Mood">
                                     <div class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-purple-700 bg-purple-100 border border-purple-300 ">
@@ -313,15 +313,14 @@
 </nav>
 
 
-<script src="https://web.quantimo.do/lib/localforage/dist/localforage.js"></script>
+<script src="https://app.curedao.org/lib/localforage/dist/localforage.js"></script>
 <script src="https://static.quantimo.do/js/quantimodo-web.js"></script>
 <script src="https://static.quantimo.do/js/qmLogger.js"></script>
-<script src="https://web.quantimo.do/lib/q/q.js"></script>
+<script src="https://app.curedao.org/lib/q/q.js"></script>
 
 <script src="https://static.quantimo.do/data/qmStates.js"></script>
 <script src="https://static.quantimo.do/data/stateNames.js"></script>
 <script defer src="https://static.quantimo.do/data/units.js"></script>
-<script defer src="https://static.quantimo.do/data/commonVariables.js"></script>
 <script defer src="https://static.quantimo.do/data/docs.js"></script>
 <script defer src="https://static.quantimo.do/data/dialogAgent.js"></script>
 <script src="./js/search-filter.js"></script>
@@ -376,6 +375,7 @@
 <!--<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>-->
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="//unpkg.com/alpinejs" defer></script>
 </body>
 </html>
 
