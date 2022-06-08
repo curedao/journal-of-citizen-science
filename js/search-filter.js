@@ -43,7 +43,9 @@ function addSearchingNotification(searchId, input) {
         '    <div class="flex justify-center items-center m-1 font-large py-1 px-2 bg-white rounded-full text-purple-700 bg-purple-100 border border-purple-300 ">' +
         '       <div slot="avatar">' +
         '           <div class="flex relative w-4 h-4 bg-orange-500 justify-center items-center m-1 mr-2 ml-0 my-0 text rounded-full">' +
-        '             <img class="rounded-full" alt="A" src="https://image.flaticon.com/icons/png/512/3208/3208746.png">' +
+        '             <ion-icon name="search">' +
+        //'             <img class="rounded-full" alt="A"
+        // src="https://image.flaticon.com/icons/png/512/3208/3208746.png">' +
         '        </div>' +
         '       </div>' +
         '           <div class="text font-normal leading-none max-w-full flex-initial">' +
@@ -74,12 +76,17 @@ function searchFilterRaw(searchId) {
                 }
                 fixFavicon(v)
                 function addPillHtml() {
+                    var ionIcon = v.ionIcon.replace('ion-', '').replace('ios-', '').replace('android-', '');
+                    if(ionIcon === "fork"){ionIcon = "fast-food"}
                     html += //'<li><a href="'+v.url+'">'+v.name+'</a></li>' +
                         '<a href="' + v.url + '" title="' + v.subtitle + '" data-search="' + v.synonyms.join(", ") + '">' +
                         '    <div class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-purple-700 bg-purple-100 border border-purple-300 ">' +
                         '                    <div slot="avatar">' +
                         '                <div class="flex relative w-4 h-4 bg-orange-500 justify-center items-center m-1 mr-2 ml-0 my-0 text rounded-full">' +
-                        '                    <img class="rounded-full" alt="A" src="' + v.imageUrl + '">' +
+                        // '                    <img class="rounded-full" alt="A" src="' + v.imageUrl + '">' +
+                        //'                    <i class="rounded-full ' + v.fontAwesome + '"></i>' +
+                        '<ion-icon name="' + ionIcon + '"></ion-icon>'+
+                        //'<ion-icon name="heart"></ion-icon> '+
                         '                </div>' +
                         '            </div>' +
                         '                <div class="text font-normal leading-none max-w-full flex-initial">' +

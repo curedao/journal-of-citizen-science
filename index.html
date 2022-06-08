@@ -50,15 +50,16 @@
             background: #2299dd;
         }
     </style>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css">
     <!-- Sortable tables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/so-simple.css">
+    <link rel="stylesheet" href="https://static.quantimo.do/css/so-simple.css">
     <link rel="stylesheet" href="https://static.quantimo.do/css/jekyll-text-theme.css">
-    <link rel="stylesheet" href="./css/toc.css">
+    <link rel="stylesheet" href="https://static.quantimo.do/css/toc.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
     <link rel="alternate" type="application/atom+xml" title="CureDAO" href="feed.xml">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -70,6 +71,7 @@
     <script src="https://static.quantimo.do/data/variableCategories.js"></script>
     <script src="https://static.quantimo.do/js/psychedelic-loader.js" defer></script>
     <script src="//unpkg.com/alpinejs" defer></script>
+
 </head>
 <body class="layout--default">
 <nav class="skip-links">
@@ -111,14 +113,14 @@
         </ul>
 
     </nav>
-  </div><!-- /.navigation-wrapper -->
+</div><!-- /.navigation-wrapper -->
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         // main menu toggle
         var toggleButton = document.getElementById("menu-toggle");
         var menu = document.getElementById("primary-nav");
         if (toggleButton && menu) {
-            toggleButton.addEventListener("click", function() {
+            toggleButton.addEventListener("click", function () {
                 menu.classList.toggle("js-menu-is-open");
             });
         }
@@ -127,126 +129,130 @@
         // add lightbox class to all image links
         $("a[href$='.jpg'], a[href$='.png'], a[href$='.gif']").attr("data-lity", "");
     });
-</script><header class="masthead">
-  <div class="wrap">
-      <a href="/" class="site-logo" rel="home" title="The Journal of Citizen Science">
-          <img src="https://static.quantimo.do/img/icons/crowdsourcing-utopia/crowdsourcing-utopia-icon-1024-1024-padding.png"
-               class="site-logo-img animated fadeInDown" alt="The Journal of Citizen Science">
-      </a>
-      <h1 class="site-title animated fadeIn"><a href="/">The Journal of Citizen Science</a></h1>
-      <p class="site-description animated fadeIn" itemprop="description">Ending suffering through crowdsourced clinical research. </p>
-  </div>
+</script>
+<header class="masthead">
+    <div class="wrap">
+        <a href="/" class="site-logo" rel="home" title="The Journal of Citizen Science">
+            <img src="https://static.quantimo.do/img/icons/crowdsourcing-utopia/crowdsourcing-utopia-icon-1024-1024-padding.png"
+                 class="site-logo-img animated fadeInDown" alt="The Journal of Citizen Science">
+        </a>
+        <h1 class="site-title animated fadeIn"><a href="/">The Journal of Citizen Science</a></h1>
+        <p class="site-description animated fadeIn" itemprop="description">Ending suffering through crowdsourced
+            clinical research. </p>
+    </div>
 </header><!-- /.masthead -->
 <main id="main" class="main-content" aria-label="Content">
     <article>
         <div class="page-wrapper">
-<div class="container pt-2 mx-auto" x-data="model">
-    <form onsubmit="return false;" style="margin-top: 1rem; margin-bottom: 1rem;">
-    <div style="padding: 0.5em;
+            <div class="container pt-2 mx-auto" x-data="model">
+                <form id="search-form" onsubmit="return false;" style="margin-top: 1rem; margin-bottom: 1rem;">
+                    <div style="padding: 0.5em;
     width: 100%;
     font-size: 0.9em;
     border: 1px solid #cccccc;
     border-radius: 2rem;
     box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);">
-        <i class="fas fa-search" style="padding: 0.5rem"></i>
-        <!--suppress HtmlFormInputWithoutLabel -->
-        <input
-                id="variables-input"
-                style="width: 80%"
-                onkeyup="searchFilter('variables')"
-                placeholder="Search for a variable..."
-                type="search"
-        />
-    </div>
-</form>
-    <div id="variables-list"
-         class="flex flex-wrap justify-center" >
-        <template x-for="item in  model.variables" :key="item">
-            <a :href="`${item.url}`"
-               style="margin: 0.2rem;"
-               :title="`${item.tooltip}`">
-                <div class="flex justify-center items-center font-medium py-1 px-2 bg-white rounded-full text-purple-700 bg-purple-100 border border-purple-300 ">
-                    <div slot="avatar">
-                        <div class="flex relative w-4 h-4 bg-orange-500 justify-center items-center m-1 mr-2 ml-0 my-0 text-xs rounded-full">
+                        <i class="fas fa-search" style="padding: 0.5rem"></i>
+                        <!--suppress HtmlFormInputWithoutLabel -->
+                        <input
+                                id="variables-input"
+                                style="width: 80%"
+                                onkeyup="searchFilter('variables')"
+                                placeholder="Search for a variable..."
+                                type="search"
+                        />
+                    </div>
+                </form>
+                <div id="variables-list"
+                     class="flex flex-wrap justify-center">
+                    <template x-for="item in  model.variables" :key="item">
+                        <a :href="`${item.url}`"
+                           style="margin: 0.2rem;"
+                           :title="`${item.tooltip}`">
+                            <div class="flex justify-center items-center font-medium py-1 px-2 bg-white rounded-full text-purple-700 bg-purple-100 border border-purple-300 ">
+                                <div slot="avatar">
+                                    <div class="flex relative w-4 h-4 bg-orange-500 justify-center items-center m-1 mr-2 ml-0 my-0 text-xs rounded-full">
 
-                            <i :class="`${item.font_awesome}`"></i>
+                                        <i :class="`${item.font_awesome}`"></i>
+                                    </div>
+                                </div>
+                                <div class="text-xs font-normal leading-none max-w-full flex-initial"
+                                     x-text="item.title">
+
+                                </div>
+                                <div style="font-size: 0.6rem; margin-left: 0.6rem;"
+                                     x-text="item.badge_text"
+                                     class="badge rounded-full px-1 py-1 text-center object-right-top bg-white border border-purple-300">
+                                </div>
+                            </div>
+                        </a>
+                    </template>
+                </div>
+            </div>
+            <div id="variables-api-results" class="flex flex-wrap justify-center"></div>
+            <div id="variables-not-found-box" class="p-2" style="display: block;">
+                <div class="bg-white rounded-lg shadow-xl">
+                    <div class="p-2">
+                        <div style="text-align: center; margin:auto;">
+                            <img
+                                    src="https://static.quantimo.do/img/robots/quantimodo-robot-puzzled-213-300.png"
+                                    style="text-align: center; margin:auto; max-height: 200px;"
+                                    alt="PUZZLED_ROBOT"
+                            >
                         </div>
-                    </div>
-                    <div class="text-xs font-normal leading-none max-w-full flex-initial" x-text="item.title">
-
-                    </div>
-                    <div style="font-size: 0.6rem; margin-left: 0.6rem;"
-                         x-text="item.badge_text"
-                         class="badge rounded-full px-1 py-1 text-center object-right-top bg-white border border-purple-300">
-                    </div>
-                </div>
-            </a>
-        </template>
-    </div>
-</div>
-<div id="variables-api-results" class="flex flex-wrap justify-center"></div>
-<div id="variables-not-found-box" class="p-2" style="display: block;">
-    <div class="bg-white rounded-lg shadow-xl">
-        <div class="p-2">
-            <div style="text-align: center; margin:auto;">
-                <img
-                        src="https://static.quantimo.do/img/robots/quantimodo-robot-puzzled-213-300.png"
-                        style="text-align: center; margin:auto; max-height: 200px;"
-                        alt="PUZZLED_ROBOT"
-                >
-            </div>
-            <div class="mt-8 text-center">
-                <div class="font-bold text-lg text-gray-700 mb-1">
-                    Don't see what you're looking for?
-                </div>
-                <div>
-                    <p class="text-gray-600">
-                        Create a study and help us eradicate suffering!
-                    </p>
-                </div>
-                                    <!-- Start resources/views/button-pink-rounded.blade.php -->
-<a
-        href="https://web.quantimo.do/#/app/onboarding"
-        title="Going through the onboarding process makes it easy to tracking and discover hidden factors affecting your well-being!"
-        target="_blank"
-        class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-base px-8 py-3 rounded-full shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
-        type="button"
-        style="margin: 1rem; transition: all .15s ease;"
->
-    <i class="far fa-edit"></i>
-    Start Tracking
-</a>
-<!-- End resources/views/button-pink-rounded.blade.php -->
-                                <div id="categories-list" class="flex flex-wrap justify-center">
-            <a href="https://local.curedao.org/categories/Emotions"
-   title="Do you have any emotions that fluctuate regularly?  If so, add them so I can try to determine which factors are influencing them."
-    data-search="Emotions, Emotion, Mood">
-    <div class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-purple-700 bg-purple-100 border border-purple-300 ">
-                    <div slot="avatar">
-                <div class="flex relative w-4 h-4 bg-orange-500 justify-center items-center m-1 mr-2 ml-0 my-0 text rounded-full">
-                    <img class="rounded-full" alt="A" src="https://static.quantimo.do/img/variable_categories/theatre_mask-96.png">
-                </div>
-            </div>
-                <div class="text font-normal leading-none max-w-full flex-initial">
-            Emotions
-                            <span style="font-size: 0.6rem;"
-                    class="badge rounded-full px-1 py-1 text-center object-right-top bg-white border border-purple-300">
+                        <div class="mt-8 text-center">
+                            <div class="font-bold text-lg text-gray-700 mb-1">
+                                Don't see what you're looking for?
+                            </div>
+                            <div>
+                                <p class="text-gray-600">
+                                    Create a study and help us eradicate suffering!
+                                </p>
+                            </div>
+                            <!-- Start resources/views/button-pink-rounded.blade.php -->
+                            <a
+                                    href="https://web.quantimo.do/#/app/onboarding"
+                                    title="Going through the onboarding process makes it easy to tracking and discover hidden factors affecting your well-being!"
+                                    target="_blank"
+                                    class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-base px-8 py-3 rounded-full shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+                                    type="button"
+                                    style="margin: 1rem; transition: all .15s ease;"
+                            >
+                                <i class="far fa-edit"></i>
+                                Start Tracking
+                            </a>
+                            <!-- End resources/views/button-pink-rounded.blade.php -->
+                            <div id="categories-list" class="flex flex-wrap justify-center">
+                                <a href="https://local.curedao.org/categories/Emotions"
+                                   title="Do you have any emotions that fluctuate regularly?  If so, add them so I can try to determine which factors are influencing them."
+                                   data-search="Emotions, Emotion, Mood">
+                                    <div class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-purple-700 bg-purple-100 border border-purple-300 ">
+                                        <div slot="avatar">
+                                            <div class="flex relative w-4 h-4 bg-orange-500 justify-center items-center m-1 mr-2 ml-0 my-0 text rounded-full">
+                                                <img class="rounded-full" alt="A"
+                                                     src="https://static.quantimo.do/img/variable_categories/theatre_mask-96.png">
+                                            </div>
+                                        </div>
+                                        <div class="text font-normal leading-none max-w-full flex-initial">
+                                            Emotions
+                                            <span style="font-size: 0.6rem;"
+                                                  class="badge rounded-full px-1 py-1 text-center object-right-top bg-white border border-purple-300">
                     43085
                 </span>
+                                        </div>
+                                    </div>
+                                </a>
+
+
+                            </div>
+                        </div>
                     </div>
-    </div>
-</a>
+                </div>
+            </div><!-- Start resources/views/ionic_js.blade.php -->
 
+            <!-- End resources/views/ionic_js.blade.php -->
 
-    </div>
-            </div>
         </div>
-    </div>
-</div><!-- Start resources/views/ionic_js.blade.php -->
-
-<!-- End resources/views/ionic_js.blade.php -->
-
-                    </div>
     </article>
 </main>
 <nav id="footer-nav">
@@ -290,10 +296,10 @@
             <a class="social-icon" href="https://quantimo.do/tos">
                 <i class="fas fa-file-contract fa-2x" title="Terms of Service"></i>
             </a>
-<!--            <a class="social-icon" href="https://wordpress.org/plugins/quantimodo">
-                <i class="fab fa-wordpress fa-2x"
-                   title="The QuantiModo WordPress Plugin facilitates the democratization of clinical research by allowing anyone to create their own research platform.  It allows users to record, aggregate, analyze and visualize their health and life-tracking data.  The data collection, analysis and visualization functionality may be included in any page or post."></i>
-            </a>-->
+            <!--            <a class="social-icon" href="https://wordpress.org/plugins/quantimodo">
+                            <i class="fab fa-wordpress fa-2x"
+                               title="The QuantiModo WordPress Plugin facilitates the democratization of clinical research by allowing anyone to create their own research platform.  It allows users to record, aggregate, analyze and visualize their health and life-tracking data.  The data collection, analysis and visualization functionality may be included in any page or post."></i>
+                        </a>-->
         </div>
 
         <div class="copyright">
@@ -308,8 +314,8 @@
 
 
 <script src="https://web.quantimo.do/lib/localforage/dist/localforage.js"></script>
-<script src="./js/quantimodo-web.js"></script>
-<script src="./js/qmLogger.js"></script>
+<script src="https://static.quantimo.do/js/quantimodo-web.js"></script>
+<script src="https://static.quantimo.do/js/qmLogger.js"></script>
 <script src="https://web.quantimo.do/lib/q/q.js"></script>
 
 <script src="https://static.quantimo.do/data/qmStates.js"></script>
@@ -367,7 +373,9 @@
         hasInnerContainers: true,
     });
 </script>
-
+<!--<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>-->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
 
